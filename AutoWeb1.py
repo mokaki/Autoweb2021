@@ -34,7 +34,15 @@ from selenium.webdriver.common.keys import Keys
 
 
 def _MakeGoogleAC():
+	global GmailPS
 	print ('\n_MakeGoogleAC 自動開ac 202101230510')
+
+	#生成随机密码
+	for i in range(1):
+		#密码的长度为15
+		#print (GenPassword(15))
+		GmailPS = _GenPassword(15)
+		print ('*****************生成随机密码*****************\n',GmailPS,'\n*****************\n')
 
 
 	#selenium基本
@@ -78,19 +86,13 @@ def _MakeGoogleAC():
 
 
 
+
+
+
 #生成随机密码
 import random
 import string
 GmailPS = 0
-def _GenPasswordGmail():
-	global GmailPS
-	#生成10个随机密码   
-	for i in range(1):
-		#密码的长度为15
-		#print (GenPassword(15))
-		GmailPS = _GenPassword(15)
-		print ('*****************生成随机密码*****************\n',GmailPS,'\n*****************\n')
-
 def _GenPassword(length):
 	chars=string.ascii_letters+string.digits
 	return ''.join([random.choice(chars) for i in range(length)])#得出的结果中字符会有重复的
@@ -107,7 +109,7 @@ def _GenPassword(length):
 
 
 
-_GenPasswordGmail(),_MakeGoogleAC()
+_MakeGoogleAC()
 
 
 
