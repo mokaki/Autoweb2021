@@ -8,6 +8,182 @@
 
 
 import os
+import json
+import time
+
+
+
+
+
+
+
+
+
+
+
+
+
+#############################################_Star
+def _Star():
+	global a0json
+	print ('\n開始AutoWeb _Star')
+	a0json = '0.json'
+	if os.path.isfile(a0json):					#如0檔在
+		_SeeDate()
+	else:									#0檔不在入名
+		print ('\n您可以將文件命名為 0.json 即可自動執行')
+		Jonsinput00 = input('請輸入存檔名')
+		dateurl0 = input('存檔位置,如..\\date\\*可沒有')
+		DataURL = str(dateurl0)+str(Jonsinput00)+'.json'
+		_SeeMyDate = (str(DataURL))
+
+		if not os.path.isfile(_SeeMyDate):	#入名檔都不在
+			print ("帳號文件不存在\n轉去創新文件")
+			_MakeDate()
+		else:
+			a0json = _SeeMyDate
+			_SeeDate()
+#############################################_StarEND
+
+
+
+
+
+
+
+
+
+
+
+
+#############################################_MakeDate
+def _MakeDate():
+	global Jonsinput0
+	global Jonsinput1
+	global Jonsinput2
+	global Jonsinput3
+	global Jonsinput4
+	global Jonsinput5
+	global Jonsinput6
+	global Jonsinput7
+	#print ('\n創新文件 _MakeDate 202101241519')
+
+	Jonsinput0 = input('''
+		*******自動整網系統 歡迎您*******\n
+		請依次輸入\n
+		Whatsapp號>姓>名>出生年>Gmail名>Gmail密碼>\n
+		謝謝\n
+		*******************************\n\n
+請輸入Whatsapp號...\n''')
+
+	Jonsinput1a = input('姓...\n*不填寫會用隨機3個英文字\n\n單獨輸入一個字符,將全使用隨樹')
+
+	if (len(Jonsinput1a) == 1 ):	#單獨輸入一個字符,將全使用隨樹
+		PSSel = 1
+		Jonsinput1 = _GenPassword(3)	#3字英文姓
+		Jonsinput2 = _GenPassword(6)	#6字英文名
+		Jonsinput3 = str('19'+str(random.randint(79,99)))	#隨機2個數字
+		Jonsinput4 = str(random.randint(1,12))	#隨機2個數字
+		Jonsinput5 = str(random.randint(1,28))	#隨機2個數字
+		Jonsinput6 = str(Jonsinput1+Jonsinput2)	#隨機2個數字
+		PSSel = 0
+		Jonsinput7 = _GenPassword(15)	#15字密碼
+		_printDate()
+	else:
+		if (len(Jonsinput1a) == 0 ):
+			PSSel = 1
+			Jonsinput1 = _GenPassword(3)	#3字英文姓
+		else:
+			Jonsinput1 = Jonsinput1a	#客入的姓
+
+		Jonsinput2a = input('名...\n*不填寫會用隨機6個英文字')
+		if (len(Jonsinput2a) == 0 ):
+			PSSel = 1
+			Jonsinput2 = _GenPassword(6)	#6字英文名
+		else:
+			Jonsinput2 = Jonsinput2a	#客入的名
+
+		Jonsinput3a = input('出生年後2位...\n*不填寫會用隨機2個數字')
+		if (len(Jonsinput3a) == 0 ):
+			Jonsinput3 = str('19'+str(random.randint(79,99)))	#隨機2個數字
+		else:
+			Jonsinput3 = str('19'+Jonsinput3a)	#客入的2個數字
+
+		Jonsinput4a = input('月...\n*不填寫會用隨機2個數字')
+		if (len(Jonsinput4a) == 0 ):
+			Jonsinput4 = str(random.randint(1,12))	#隨機2個數字
+		else:
+			Jonsinput4 = Jonsinput4a	#客入的2個數字
+
+		Jonsinput5a = input('日...\n*不填寫會用隨機2個數字')
+		if (len(Jonsinput5a) == 0 ):
+			Jonsinput5 = str(random.randint(1,28))	#隨機2個數字
+		else:
+			Jonsinput5 = Jonsinput5a	#客入的2個數字
+
+		Jonsinput6a = input('GAC...\n*不填寫會用隨機生成的英文姓名組成')
+		if (len(Jonsinput6a) == 0 ):
+			Jonsinput6 = str(Jonsinput1+Jonsinput2)	#隨機2個數字
+		else:
+			Jonsinput6 = Jonsinput6a	#客入的2個數字
+
+		Jonsinput7a = input('GPS...\n*不填寫會用隨機15個英文數字')
+		if (len(Jonsinput7a) == 0 ):
+			PSSel = 0
+			Jonsinput7 = _GenPassword(15)	#15字密碼
+		else:
+			Jonsinput7 = Jonsinput7a	#客入的2個數字
+		_printDate()
+#############################################_MakeDateEND
+
+
+
+
+
+
+
+
+#############################################_printDate
+Jonsinput0 = 0
+Jonsinput1 = 0
+Jonsinput2 = 0
+Jonsinput3 = 0
+Jonsinput4 = 0
+Jonsinput5 = 0
+Jonsinput6 = 0
+Jonsinput7 = 0
+def _printDate():
+	print ('\n查文件 _printDate _printDate')
+
+	print ("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+	print ("\nWhatsapp號 ",Jonsinput0)
+	print ("\n姓",Jonsinput1)
+	print ("\n名",Jonsinput2)
+	print ("\n出生年 ",Jonsinput3)
+	print ("\n月",Jonsinput4)
+	print ("\n日",Jonsinput5)
+	print ("\nGAC",Jonsinput6)
+	print ("\nGPS",Jonsinput7)
+	print ("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+	os.system("pause")
+#############################################_SeeDateEND
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -31,18 +207,15 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-
-
 def _MakeGoogleAC():
 	global GmailPS
+	global PSSel
 	print ('\n_MakeGoogleAC 自動開ac 202101230510')
 
-	#生成随机密码
-	for i in range(1):
-		#密码的长度为15
-		#print (GenPassword(15))
-		GmailPS = _GenPassword(15)
-		print ('*****************生成随机密码*****************\n',GmailPS,'\n*****************\n')
+	PSSel = 1
+	#密码的长度为15
+	GmailPS = _GenPassword(15)
+	print ('*****************生成随机密码*****************\n',GmailPS,'\n*****************\n')
 
 
 	#selenium基本
@@ -89,13 +262,112 @@ def _MakeGoogleAC():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#############################################_SaveDate
+def _SaveDate():
+
+	print ('開始存檔')
+	JonsinputAll = {
+		'Date': [
+			{
+			#############################################
+				'Whatsapp號': Jonsinput0,
+				'姓': Jonsinput1,
+				'名': Jonsinput2,
+				'出生年': Jonsinput3,
+				'月': Jonsinput4,
+				'日': Jonsinput5,
+				'GAC': Jonsinput6,
+				'GPS': Jonsinput7
+			#############################################
+			}
+		]
+	}
+	path = Jonsinput0+"_"+time.strftime('%Y%m%d%H%M%S')+'.json'
+	json_str = json.dumps(JonsinputAll, ensure_ascii=False, indent=4) # 缩进4字符
+	with open(path, 'w', encoding="utf-8") as json_file:
+		json_file.write(json_str)
+	print ('已保存\n'+str(JonsinputAll))
+	_SeeDate()
+#############################################_SaveDateEND
+
+
+
+
+
+
+
+#############################################_SeeDate
+a0json = '0.json'
+def _SeeDate():
+	print ('\n查文件 _SeeDate 202101202244')
+	with open(a0json, 'r', encoding="utf-8") as ha0ha:
+		data = json.load(ha0ha)
+		Jonsinput0 = data['Date'][0]['Whatsapp號']
+		Jonsinput1 = data['Date'][0]['姓']
+		Jonsinput2 = data['Date'][0]['名']
+		Jonsinput3 = data['Date'][0]['出生年']
+		Jonsinput4 = data['Date'][0]['月']
+		Jonsinput5 = data['Date'][0]['日']
+		Jonsinput6 = data['Date'][0]['GAC']
+		Jonsinput7 = data['Date'][0]['GPS']
+		print ("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+		print ("\nWhatsapp號 ",Jonsinput0)
+		print ("\n姓",Jonsinput1)
+		print ("\n名",Jonsinput2)
+		print ("\n出生年 ",Jonsinput3)
+		print ("\n月",Jonsinput4)
+		print ("\n日",Jonsinput5)
+		print ("\nGAC",Jonsinput6)
+		print ("\nGPS",Jonsinput7)
+		print ("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+		os.system("pause")
+#############################################_SeeDateEND
+
+
+
+
+
+
+
+
+
+
+
+
+
 #生成随机密码
 import random
 import string
+PSSel = 0
 GmailPS = 0
 def _GenPassword(length):
-	chars=string.ascii_letters+string.digits
-	return ''.join([random.choice(chars) for i in range(length)])#得出的结果中字符会有重复的
+	if PSSel == 0:	#随机英數文字
+		chars=string.ascii_letters+string.digits
+		return ''.join([random.choice(chars) for i in range(length)])
+	if PSSel == 1:	#随机英文字
+		chars=string.ascii_letters
+		return ''.join([random.choice(chars) for i in range(length)])
 #生成随机密码END
 
 
@@ -104,12 +376,7 @@ def _GenPassword(length):
 
 
 
-
-
-
-
-
-_MakeGoogleAC()
+_Star()
 
 
 
