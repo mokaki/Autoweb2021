@@ -49,6 +49,33 @@ def _Star():
 
 
 
+#############################################_SeeDate
+a0json = '0.json'
+def _SeeDate():
+	print ('\n查文件 _SeeDate 202101202244\n',a0json)
+	with open(a0json, 'r', encoding="utf-8") as ha0ha:
+		data = json.load(ha0ha)
+		Jonsinput0 = data['Date'][0]['Whatsapp號']
+		Jonsinput1 = data['Date'][0]['姓']
+		Jonsinput2 = data['Date'][0]['名']
+		Jonsinput3 = data['Date'][0]['出生年']
+		Jonsinput4 = data['Date'][0]['月']
+		Jonsinput5 = data['Date'][0]['日']
+		Jonsinput6 = data['Date'][0]['GAC']
+		Jonsinput7 = data['Date'][0]['GPS']
+		print ("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+		print ("\nWhatsapp號 ",Jonsinput0)
+		print ("\n姓",Jonsinput1)
+		print ("\n名",Jonsinput2)
+		print ("\n出生年 ",Jonsinput3)
+		print ("\n月",Jonsinput4)
+		print ("\n日",Jonsinput5)
+		print ("\nGAC",Jonsinput6)
+		print ("\nGPS",Jonsinput7)
+		print ("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$_SeeDate$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+		os.system("pause")
+#############################################_SeeDateEND
+
 
 
 
@@ -88,7 +115,7 @@ def _MakeDate():
 		Jonsinput6 = str(Jonsinput1+Jonsinput2)	#隨機2個數字
 		PSSel = 0
 		Jonsinput7 = _GenPassword(15)	#15字密碼
-		_printDate()
+		_printDate(),_SaveDate()
 	else:
 		if (len(Jonsinput1a) == 0 ):
 			PSSel = 1
@@ -133,7 +160,7 @@ def _MakeDate():
 			Jonsinput7 = _GenPassword(15)	#15字密碼
 		else:
 			Jonsinput7 = Jonsinput7a	#客入的2個數字
-		_printDate()
+		_printDate(),_SaveDate()
 #############################################_MakeDateEND
 
 
@@ -165,8 +192,8 @@ def _printDate():
 	print ("\nGAC",Jonsinput6)
 	print ("\nGPS",Jonsinput7)
 	print ("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-	os.system("pause")
-#############################################_SeeDateEND
+
+#############################################_printDateEND
 
 
 
@@ -174,9 +201,34 @@ def _printDate():
 
 
 
-
-
-
+#############################################_SaveDate
+def _SaveDate():
+	global a0json
+	print ('開始存檔')
+	JonsinputAll = {
+		'Date': [
+			{
+			#############################################
+				'Whatsapp號': Jonsinput0,
+				'姓': Jonsinput1,
+				'名': Jonsinput2,
+				'出生年': Jonsinput3,
+				'月': Jonsinput4,
+				'日': Jonsinput5,
+				'GAC': Jonsinput6,
+				'GPS': Jonsinput7
+			#############################################
+			}
+		]
+	}
+	path = Jonsinput0+"_"+time.strftime('%Y%m%d%H%M%S')+'.json'
+	json_str = json.dumps(JonsinputAll, ensure_ascii=False, indent=4) # 缩进4字符
+	with open(path, 'w', encoding="utf-8") as json_file:
+		json_file.write(json_str)
+	print ('已保存\n'+str(JonsinputAll))
+	a0json = path
+	_SeeDate()
+#############################################_SaveDateEND
 
 
 
@@ -283,66 +335,7 @@ def _MakeGoogleAC():
 
 
 
-#############################################_SaveDate
-def _SaveDate():
 
-	print ('開始存檔')
-	JonsinputAll = {
-		'Date': [
-			{
-			#############################################
-				'Whatsapp號': Jonsinput0,
-				'姓': Jonsinput1,
-				'名': Jonsinput2,
-				'出生年': Jonsinput3,
-				'月': Jonsinput4,
-				'日': Jonsinput5,
-				'GAC': Jonsinput6,
-				'GPS': Jonsinput7
-			#############################################
-			}
-		]
-	}
-	path = Jonsinput0+"_"+time.strftime('%Y%m%d%H%M%S')+'.json'
-	json_str = json.dumps(JonsinputAll, ensure_ascii=False, indent=4) # 缩进4字符
-	with open(path, 'w', encoding="utf-8") as json_file:
-		json_file.write(json_str)
-	print ('已保存\n'+str(JonsinputAll))
-	_SeeDate()
-#############################################_SaveDateEND
-
-
-
-
-
-
-
-#############################################_SeeDate
-a0json = '0.json'
-def _SeeDate():
-	print ('\n查文件 _SeeDate 202101202244')
-	with open(a0json, 'r', encoding="utf-8") as ha0ha:
-		data = json.load(ha0ha)
-		Jonsinput0 = data['Date'][0]['Whatsapp號']
-		Jonsinput1 = data['Date'][0]['姓']
-		Jonsinput2 = data['Date'][0]['名']
-		Jonsinput3 = data['Date'][0]['出生年']
-		Jonsinput4 = data['Date'][0]['月']
-		Jonsinput5 = data['Date'][0]['日']
-		Jonsinput6 = data['Date'][0]['GAC']
-		Jonsinput7 = data['Date'][0]['GPS']
-		print ("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-		print ("\nWhatsapp號 ",Jonsinput0)
-		print ("\n姓",Jonsinput1)
-		print ("\n名",Jonsinput2)
-		print ("\n出生年 ",Jonsinput3)
-		print ("\n月",Jonsinput4)
-		print ("\n日",Jonsinput5)
-		print ("\nGAC",Jonsinput6)
-		print ("\nGPS",Jonsinput7)
-		print ("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-		os.system("pause")
-#############################################_SeeDateEND
 
 
 
@@ -362,12 +355,13 @@ import string
 PSSel = 0
 GmailPS = 0
 def _GenPassword(length):
+	if PSSel == 1:	#随机英文字
+		chars=string.letters
+		return ''.join([random.choice(chars) for i in range(length)])
 	if PSSel == 0:	#随机英數文字
 		chars=string.ascii_letters+string.digits
 		return ''.join([random.choice(chars) for i in range(length)])
-	if PSSel == 1:	#随机英文字
-		chars=string.ascii_letters
-		return ''.join([random.choice(chars) for i in range(length)])
+
 #生成随机密码END
 
 
