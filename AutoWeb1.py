@@ -4,22 +4,9 @@
 202101230510
 '''
 
-
-
-
 import os
 import json
 import time
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -44,7 +31,6 @@ def _Star():
 			a0json = _SeeMyDate
 			_SeeDate()
 #############################################_StarEND
-
 
 
 
@@ -79,92 +65,28 @@ def _SeeDate():
 
 
 
-
-
-
-
-#############################################_MakeDate
-def _MakeDate():
-	global Jonsinput0
-	global Jonsinput1
-	global Jonsinput2
-	global Jonsinput3
-	global Jonsinput4
-	global Jonsinput5
-	global Jonsinput6
-	global Jonsinput7
-	#print ('\n創新文件 _MakeDate 202101241519')
-
-	Jonsinput0 = input('''
-		*******自動整網系統 歡迎您*******\n
-		請依次輸入\n
-		Whatsapp號>姓>名>出生年>Gmail名>Gmail密碼>\n
-		謝謝\n
-		*******************************\n\n
-請輸入Whatsapp號...\n''')
-
-	Jonsinput1a = input('姓...\n*不填寫會用隨機3個英文字\n\n單獨輸入一個字符,將全使用隨樹')
-
-	if (len(Jonsinput1a) == 1 ):	#單獨輸入一個字符,將全使用隨樹
-	
-		Jonsinput1 = _GenRandomTxt(3)	#3字英文姓
-		Jonsinput2 = _GenRandomTxt(6)	#6字英文名
-		Jonsinput3 = str('19'+str(random.randint(79,99)))	#隨機年2個數字
-		Jonsinput4 = str(random.randint(1,12))	#隨機月2個數字
-		Jonsinput5 = str(random.randint(1,28))	#隨機日2個數字
-		Jonsinput6 = str(Jonsinput1+Jonsinput2)	#1+2=英文姓
-		Jonsinput7 = _GenPassword(15)	#15字密碼
-		_printDate(),_SaveDate()
-	else:
-		if (len(Jonsinput1a) == 0 ):
-			Jonsinput1 = _GenRandomTxt(3)	#3字英文姓
-		else:
-			Jonsinput1 = Jonsinput1a	#客入的姓
-		Jonsinput2a = input('名...\n*不填寫會用隨機6個英文字')
-		if (len(Jonsinput2a) == 0 ):
-			Jonsinput2 = _GenRandomTxt(6)	#6字英文名
-		else:
-			Jonsinput2 = Jonsinput2a	#客入的名
-
-		Jonsinput3a = input('出生年後2位...\n*不填寫會用隨機2個數字')
-		if (len(Jonsinput3a) == 0 ):
-			Jonsinput3 = str('19'+str(random.randint(79,99)))	#隨機2個數字
-		else:
-			Jonsinput3 = str('19'+Jonsinput3a)	#客入的2個數字
-
-		Jonsinput4a = input('月...\n*不填寫會用隨機2個數字')
-		if (len(Jonsinput4a) == 0 ):
-			Jonsinput4 = str(random.randint(1,12))	#隨機2個數字
-		else:
-			Jonsinput4 = Jonsinput4a	#客入的2個數字
-
-		Jonsinput5a = input('日...\n*不填寫會用隨機2個數字')
-		if (len(Jonsinput5a) == 0 ):
-			Jonsinput5 = str(random.randint(1,28))	#隨機2個數字
-		else:
-			Jonsinput5 = Jonsinput5a	#客入的2個數字
-
-		Jonsinput6a = input('GAC...\n*不填寫會用隨機生成的英文姓名組成')
-		if (len(Jonsinput6a) == 0 ):
-			Jonsinput6 = str(Jonsinput1+Jonsinput2)	#隨機2個數字
-		else:
-			Jonsinput6 = Jonsinput6a	#客入的2個數字
-
-		Jonsinput7a = input('GPS...\n*不填寫會用隨機15個英文數字')
-		if (len(Jonsinput7a) == 0 ):
-			Jonsinput7 = _GenPassword(15)	#15字密碼
-		else:
-			Jonsinput7 = Jonsinput7a	#客入的2個數字
-		_printDate(),_SaveDate()
-#############################################_MakeDateEND
-
-
-
-
-
-
-
-
+#############################################_printDate
+Jonsinput0 = 0
+Jonsinput1 = 0
+Jonsinput2 = 0
+Jonsinput3 = 0
+Jonsinput4 = 0
+Jonsinput5 = 0
+Jonsinput6 = 0
+Jonsinput7 = 0
+def _printDate():
+	print ('\n查文件 _printDate _printDate')
+	print ("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+	print ("\nWhatsapp號 ",Jonsinput0)
+	print ("\n姓",Jonsinput1)
+	print ("\n名",Jonsinput2)
+	print ("\n出生年 ",Jonsinput3)
+	print ("\n月",Jonsinput4)
+	print ("\n日",Jonsinput5)
+	print ("\nGAC",Jonsinput6)
+	print ("\nGPS",Jonsinput7)
+	print ("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+#############################################_printDateEND
 
 
 
@@ -201,6 +123,78 @@ def _SaveDate():
 
 
 
+#############################################_MakeDate
+def _MakeDate():
+	global Jonsinput0
+	global Jonsinput1
+	global Jonsinput2
+	global Jonsinput3
+	global Jonsinput4
+	global Jonsinput5
+	global Jonsinput6
+	global Jonsinput7
+	#print ('\n創新文件 _MakeDate 202101241519')
+	Jonsinput0 = input('''
+		*******自動整網系統 歡迎您*******\n
+		請依次輸入\n
+		Whatsapp號>姓>名>出生年>Gmail名>Gmail密碼>\n
+		謝謝\n
+		*******************************\n\n
+請輸入Whatsapp號...\n''')
+	Jonsinput1a = input('姓...\n*不填寫會用隨機3個英文字\n\n單獨輸入一個字符,將全使用隨樹')
+	if (len(Jonsinput1a) == 1 ):	#單獨輸入一個字符,將全使用隨樹
+		Jonsinput1 = _GenRandomTxt(3)	#3字英文姓
+		Jonsinput2 = _GenRandomTxt(6)	#6字英文名
+		Jonsinput3 = str('19'+str(random.randint(79,99)))	#隨機年2個數字
+		Jonsinput4 = str(random.randint(1,12))	#隨機月2個數字
+		Jonsinput5 = str(random.randint(1,28))	#隨機日2個數字
+		Jonsinput6 = str(Jonsinput1+Jonsinput2)	#1+2=英文姓
+		Jonsinput7 = _GenPassword(15)	#15字密碼
+		_printDate(),_MakeGoogleAC()
+	else:
+		if (len(Jonsinput1a) == 0 ):
+			Jonsinput1 = _GenRandomTxt(3)	#3字英文姓
+		else:
+			Jonsinput1 = Jonsinput1a	#客入的姓
+		Jonsinput2a = input('名...\n*不填寫會用隨機6個英文字')
+		if (len(Jonsinput2a) == 0 ):
+			Jonsinput2 = _GenRandomTxt(6)	#6字英文名
+		else:
+			Jonsinput2 = Jonsinput2a	#客入的名
+		Jonsinput3a = input('出生年後2位...\n*不填寫會用隨機2個數字')
+		if (len(Jonsinput3a) == 0 ):
+			Jonsinput3 = str('19'+str(random.randint(79,99)))	#隨機2個數字
+		else:
+			Jonsinput3 = str('19'+Jonsinput3a)	#客入的2個數字
+		Jonsinput4a = input('月...\n*不填寫會用隨機2個數字')
+		if (len(Jonsinput4a) == 0 ):
+			Jonsinput4 = str(random.randint(1,12))	#隨機2個數字
+		else:
+			Jonsinput4 = Jonsinput4a	#客入的2個數字
+		Jonsinput5a = input('日...\n*不填寫會用隨機2個數字')
+		if (len(Jonsinput5a) == 0 ):
+			Jonsinput5 = str(random.randint(1,28))	#隨機2個數字
+		else:
+			Jonsinput5 = Jonsinput5a	#客入的2個數字
+		Jonsinput6a = input('GAC...\n*不填寫會用隨機生成的英文姓名組成')
+		if (len(Jonsinput6a) == 0 ):
+			Jonsinput6 = str(Jonsinput1+Jonsinput2)	#隨機2個數字
+		else:
+			Jonsinput6 = Jonsinput6a	#客入的2個數字
+		Jonsinput7a = input('GPS...\n*不填寫會用隨機15個英文數字符號')
+		if (len(Jonsinput7a) == 0 ):
+			Jonsinput7 = _GenPassword(15)	#15字密碼
+		else:
+			Jonsinput7 = Jonsinput7a	#客入的2個數字
+		_printDate(),_MakeGoogleAC()
+#############################################_MakeDateEND
+
+
+
+
+
+
+
 
 
 
@@ -228,13 +222,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 def _MakeGoogleAC():
-	global GmailPS
-	print ('\n_MakeGoogleAC 自動開ac 202101230510')
-	#密码的长度为15
-	GmailPS = _GenPassword(15)
-	print ('*****************生成随机密码*****************\n',GmailPS,'\n*****************\n')
-
-
+	print ('\n_MakeGoogleAC 自動開Googleac 202101252326\n\n')
 	#selenium基本
 	options = webdriver.ChromeOptions()		#禁彈窗
 	prefs = {'profile.default_content_setting_values':{'notifications' : 2}}  
@@ -246,26 +234,36 @@ def _MakeGoogleAC():
 	browser.set_window_size(480, 600)
 
 
-	
+	#到申請AC頁
 	browser.get('https://accounts.google.com/signup')
 	#等有email位
 	element = WebDriverWait(browser, 10, 0.5).until(		
 		EC.presence_of_element_located((By.XPATH,'//*[@id="username"]')),'\n!!!找不到這個網頁原素!!!\nGmail位\n' + '//*[@id="username"]\n'
 	)
 	#姓
-	browser.find_element_by_xpath('//*[@id="lastName"]').send_keys("name_entry")
+	browser.find_element_by_xpath('//*[@id="lastName"]').send_keys(Jonsinput1)
 	#名	
-	browser.find_element_by_xpath('//*[@id="firstName"]').send_keys("圬荏")		
+	browser.find_element_by_xpath('//*[@id="firstName"]').send_keys(Jonsinput2)		
 	#Gmail	
-	browser.find_element_by_xpath('//*[@id="username"]').send_keys("gofidfqfe")		
+	browser.find_element_by_xpath('//*[@id="username"]').send_keys(Jonsinput6)		
 	#PS
-	browser.find_element_by_xpath('//*[@id="passwd"]/div[1]/div/div[1]/input').send_keys(GmailPS)			
+	browser.find_element_by_xpath('//*[@id="passwd"]/div[1]/div/div[1]/input').send_keys(Jonsinput7)			
 	#PS2
-	browser.find_element_by_xpath('//*[@id="confirm-passwd"]/div[1]/div/div[1]/input').send_keys(GmailPS)	
-
+	browser.find_element_by_xpath('//*[@id="confirm-passwd"]/div[1]/div/div[1]/input').send_keys(Jonsinput7)	
+	#顯示密碼
 	browser.find_element_by_xpath('//*[@id="view_container"]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[3]/div[3]/div/div[1]/div/div/div[1]/div/div/input').click()
+	#繼續
+	browser.find_element_by_xpath('//*[@id="accountDetailsNext"]/div/button/div[2]').click()
 
-
+	#到驗證電話頁
+	#等有電話號碼位
+	element = WebDriverWait(browser, 10, 0.5).until(		
+		EC.presence_of_element_located((By.XPATH,'//*[@id="phoneNumberId"]')),'\n!!!找不到這個網頁原素!!!\n電話號碼位\n' + '//*[@id="phoneNumberId"]\n'
+	)
+	#電話號碼
+	browser.find_element_by_xpath('//*[@id="phoneNumberId"]').send_keys(Jonsinput0)
+	#繼續
+	browser.find_element_by_xpath('//*[@id="view_container"]/div/div/div[2]/div/div[2]/div/div[1]/div/div/button/div[2]').click()
 
 	print ('\n未禁鍵')
 	os.system("pause")
@@ -304,47 +302,11 @@ def _MakeGoogleAC():
 
 
 
-#############################################_printDate
-Jonsinput0 = 0
-Jonsinput1 = 0
-Jonsinput2 = 0
-Jonsinput3 = 0
-Jonsinput4 = 0
-Jonsinput5 = 0
-Jonsinput6 = 0
-Jonsinput7 = 0
-def _printDate():
-	print ('\n查文件 _printDate _printDate')
-
-	print ("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-	print ("\nWhatsapp號 ",Jonsinput0)
-	print ("\n姓",Jonsinput1)
-	print ("\n名",Jonsinput2)
-	print ("\n出生年 ",Jonsinput3)
-	print ("\n月",Jonsinput4)
-	print ("\n日",Jonsinput5)
-	print ("\nGAC",Jonsinput6)
-	print ("\nGPS",Jonsinput7)
-	print ("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-
-#############################################_printDateEND
-
-
-
-
-
-
-
-
-
-
-
 
 
 #生成随机密码
 import random
 import string
-GmailPS = 0
 def _GenRandomTxt(length):
 	#随机英文字
 	chars=string.ascii_letters
