@@ -11,25 +11,34 @@ import time
 
 
 #############################################_Star
+
 def _Star():
 	global a0json
-	print ('\n開始AutoWeb _Star')
+	print ('\n\n歡迎您使用 AutoWeb')
 	a0json = '0.json'
 	if os.path.isfile(a0json):					#如0檔在
 		_SeeDate()
 	else:									#0檔不在入名
-		print ('\n您可以將文件命名為 0.json 即可自動執行')
-		Jonsinput00 = input('請輸入存檔名')
-		dateurl0 = input('存檔位置,如..\\date\\*可沒有')
-		DataURL = str(dateurl0)+str(Jonsinput00)+'.json'
-		_SeeMyDate = (str(DataURL))
-
-		if not os.path.isfile(_SeeMyDate):	#入名檔都不在
-			print ("帳號文件不存在\n轉去創新文件")
-			_MakeDate()
-		else:
+		print ('\n\n您可以將文件命名為 0.json 即可自動執行')
+		Jonsinput00 = input('\n\n\n\n\n\n\n\n\n\n\n\n\n請輸入存檔名')
+		_SeeMyDate = (str(Jonsinput00+'.json'))
+		if os.path.isfile(_SeeMyDate):		#如檔在
 			a0json = _SeeMyDate
 			_SeeDate()
+		else:									#檔不入存檔位
+			dateurl0 = input('存檔位置,如..date\\')
+			DataURL = str(dateurl0)+str(Jonsinput00)+'.json'
+			_SeeMyDate = (str(DataURL))
+			if not os.path.isfile(_SeeMyDate):	#入名檔都不在
+				print ("帳號文件不存在\n轉去創新文件")
+				_MakeDate()
+			else:
+				a0json = _SeeMyDate
+				_SeeDate()
+
+
+
+		
 #############################################_StarEND
 
 
@@ -38,7 +47,7 @@ def _Star():
 #############################################_SeeDate
 a0json = '0.json'
 def _SeeDate():
-	print ('\n查文件 _SeeDate 202101202244\n',a0json)
+	print ('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n',a0json,'的存檔\n')
 	with open(a0json, 'r', encoding="utf-8") as ha0ha:
 		data = json.load(ha0ha)
 		Jonsinput0 = data['Date'][0]['Whatsapp號']
@@ -49,7 +58,7 @@ def _SeeDate():
 		Jonsinput5 = data['Date'][0]['日']
 		Jonsinput6 = data['Date'][0]['GAC']
 		Jonsinput7 = data['Date'][0]['GPS']
-		print ("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+		print ("\n+++",a0json,"+++\n")
 		print ("\nWhatsapp號 ",Jonsinput0)
 		print ("\n姓",Jonsinput1)
 		print ("\n名",Jonsinput2)
@@ -58,8 +67,9 @@ def _SeeDate():
 		print ("\n日",Jonsinput5)
 		print ("\nGAC",Jonsinput6)
 		print ("\nGPS",Jonsinput7)
-		print ("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$_SeeDate$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-		os.system("pause")
+		print ("\n+++",a0json,"+++\n")
+		os.system("pause"),_Star()
+
 #############################################_SeeDateEND
 
 
@@ -148,7 +158,7 @@ def _MakeDate():
 		Jonsinput3 = str('19'+str(random.randint(79,99)))	#隨機年2個數字
 		Jonsinput4 = str(random.randint(1,12))	#隨機月2個數字
 		Jonsinput5 = str(random.randint(1,28))	#隨機日2個數字
-		Jonsinput6 = str(Jonsinput1+Jonsinput2)	#1+2=英文姓
+		Jonsinput6 = str(Jonsinput1+Jonsinput2+Jonsinput3+Jonsinput4+Jonsinput5)	#1+2=英文姓
 		Jonsinput7 = _GenPassword(15)	#15字密碼
 		_printDate(),_MakeGoogleAC()
 	else:
@@ -178,7 +188,7 @@ def _MakeDate():
 			Jonsinput5 = Jonsinput5a	#客入的2個數字
 		Jonsinput6a = input('GAC...\n*不填寫會用隨機生成的英文姓名組成')
 		if (len(Jonsinput6a) == 0 ):
-			Jonsinput6 = str(Jonsinput1+Jonsinput2)	#隨機2個數字
+			Jonsinput6 = str(Jonsinput1+Jonsinput2+Jonsinput3+Jonsinput4+Jonsinput5)	#隨機2個數字
 		else:
 			Jonsinput6 = Jonsinput6a	#客入的2個數字
 		Jonsinput7a = input('GPS...\n*不填寫會用隨機15個英文數字符號')
@@ -244,6 +254,8 @@ def _MakeGoogleAC():
 	browser.find_element_by_xpath('//*[@id="lastName"]').send_keys(Jonsinput1)
 	#名	
 	browser.find_element_by_xpath('//*[@id="firstName"]').send_keys(Jonsinput2)		
+	print ('\n等待3至11秒')
+	time.sleep(random.uniform(3, 11))
 	#Gmail	
 	browser.find_element_by_xpath('//*[@id="username"]').send_keys(Jonsinput6)		
 	#PS
@@ -252,8 +264,11 @@ def _MakeGoogleAC():
 	browser.find_element_by_xpath('//*[@id="confirm-passwd"]/div[1]/div/div[1]/input').send_keys(Jonsinput7)	
 	#顯示密碼
 	browser.find_element_by_xpath('//*[@id="view_container"]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[3]/div[3]/div/div[1]/div/div/div[1]/div/div/input').click()
+	print ('\n等待3至11秒')
+	time.sleep(random.uniform(3, 11))
 	#繼續
 	browser.find_element_by_xpath('//*[@id="accountDetailsNext"]/div/button/div[2]').click()
+	
 
 	#到驗證電話頁
 	#等有電話號碼位
@@ -265,20 +280,57 @@ def _MakeGoogleAC():
 	#繼續
 	browser.find_element_by_xpath('//*[@id="view_container"]/div/div/div[2]/div/div[2]/div/div[1]/div/div/button/div[2]').click()
 
-	print ('\n未禁鍵')
+
+################################################
+################################################
+################################################
+################################################
+################################################
+################################################
+################################################
+
+	print ('\n請查看簡訊驗證你的電話號碼')
+
 	os.system("pause")
 
+	a = input('驗證碼')
+	#驗證碼
+	browser.find_element_by_xpath('//*[@id="code"]').send_keys(a)
+	#驗證
+	browser.find_element_by_xpath('//*[@id="view_container"]/div/div/div[2]/div/div[2]/div[2]/div[1]/div/div/button/div[2]').click()
 
 
 
 
+	#等有年位
+	element = WebDriverWait(browser, 10, 0.5).until(		
+		EC.presence_of_element_located((By.XPATH,'//*[@id="year"]')),'\n!!!找不到這個網頁原素!!!\n年位\n' + '//*[@id="year"]\n'
+	)
+	#年
+	browser.find_element_by_xpath('//*[@id="year"]').send_keys(Jonsinput3)
+	#日
+	browser.find_element_by_xpath('//*[@id="day"]').send_keys(Jonsinput5)
+	#月
+	m = str('//*[@id="month"]/option['+Jonsinput4+']')
+	browser.find_element_by_xpath(m).click()
+	#性
+	s = str(random.randint(1,4))
+	st = str('//*[@id="gender"]/option['+s+']')
+	browser.find_element_by_xpath(st).click()
 
 
+	print ('\n未K')
+################################################
+################################################
+################################################
+################################################
+################################################
+################################################
+################################################
 
 
-
-
-
+	_SaveDate()
+	#os.system("pause")
 
 
 
