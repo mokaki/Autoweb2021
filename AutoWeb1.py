@@ -36,24 +36,24 @@ def _Star():
 	global a0json
 	print ('\n\n歡迎您使用 AutoWeb')
 	a0json = '0.json'
-	if os.path.isfile(a0json):					#如0檔在
+	if os.path.isfile(a0json):								#如0檔在
 		_SeeDate()
-	else:									#0檔不在入名
+	else:												#0檔不在入名
 		print ('\n\n您可以將文件命名為 0.json 即可自動執行')
-		Jonsinput00 = input('\n\n\n\n\n\n\n\n\n\n\n\n\n請輸入存檔名')
+		Jonsinput00 = input('\n\n\n\n\n\n\n\n\n\n\n\n\n請輸入存檔名\n__')
 		if Jonsinput00 == '`':		#Admin
 			print ('\n\nAdmin _MakeDate')
 			_MakeDate()
 		else:
 			_SeeMyDate = (str(Jonsinput00+'.json'))
-			if os.path.isfile(_SeeMyDate):		#如檔在
+			if os.path.isfile(_SeeMyDate):					#如檔在
 				a0json = _SeeMyDate
 				_SeeDate()
-			else:									#檔不入存檔位
-				dateurl0 = input('存檔位置,如..date\\')
+			else:										#檔不入存檔位
+				dateurl0 = input('存檔位置,如..date\\\n__')
 				DataURL = str(dateurl0)+str(Jonsinput00)+'.json'
 				_SeeMyDate = (str(DataURL))
-				if not os.path.isfile(_SeeMyDate):	#入名檔都不在
+				if not os.path.isfile(_SeeMyDate):		#入名檔都不在
 					print ("\n\n\n\n\n\n\n帳號文件不存在\n開新存檔\n\n")
 					_MakeDate()
 				else:
@@ -108,7 +108,7 @@ def _MakeDate():
 ###***********###***********###***********###***********
 ###***********###***********###***********###***********
 ###***********###***********###***********###***********
-	Jonsinput0 = input('\n\n\n*******自動整網系統 歡迎您*******\n請輸入Whatsapp號...\n\n不輸入將全使用隨樹\n\n')
+	Jonsinput0 = input('\n\n\n*******自動整網系統 歡迎您*******\n請輸入Whatsapp號...\n\n不輸入將使用一個錯誤的號碼\n\n\n__')
 	if (len(Jonsinput0) == 0 ):
 		Jonsinput0 = str(random.randint(600000000,999999999)) 
 		Jonsinput1 = _GenRandomTxt(3)	#3字英文姓
@@ -140,7 +140,7 @@ def _MakeDate():
 		Whatsapp號>姓>名>出生年>Gmail名>Gmail密碼>\n
 		謝謝\n
 		*******************************\n\n\n\n\n\n\n\n\n
-請輸入Whatsapp號...''')
+請輸入Whatsapp號...\n__''')
 	Jonsinput1a = input('\n\n\n姓...\n*不填寫會用隨機3個英文字\n\n單獨輸入一個字符,將全使用隨樹')
 	if (len(Jonsinput1a) == 1 ):	#單獨輸入一個字符,將全使用隨樹
 		Jonsinput1 = _GenRandomTxt(3)	#3字英文姓
@@ -296,13 +296,57 @@ def _MakeGoogleAC():
 			EC.presence_of_element_located((By.XPATH,'//*[@id="code"]')),'\n!!!找不到這個網頁原素!!!\n驗證碼位\n' + '//*[@id="code"]\n'
 		)
 		print ('\n請查看簡訊驗證你的電話號碼')
-		a = input('驗證碼')
+		a = input('驗證碼\n__')
 		#驗證碼
 		browser.find_element_by_xpath('//*[@id="code"]').send_keys(a)
 		#驗證
 		browser.find_element_by_xpath('//*[@id="view_container"]/div/div/div[2]/div/div[2]/div[2]/div[1]/div/div/button/div[2]').click()
-		print("\n\n驗證碼驗證碼驗證碼驗證碼驗證碼驗證碼!\n",a.text,'\n\n')
-		os.system("pause")
+		
+
+#到這些資訊頁
+		element = WebDriverWait(browser, 10, 0.5).until(		
+		EC.presence_of_element_located((By.XPATH,'//*[@id="year"]')),'\n!!!找不到這個網頁原素!!!\n年位\n' + '//*[@id="year"]\n'
+		)
+		#年
+		browser.find_element_by_xpath('//*[@id="year"]').send_keys(Jonsinput3)
+		#日
+		browser.find_element_by_xpath('//*[@id="day"]').send_keys(Jonsinput5)
+		#月
+		m = str('//*[@id="month"]/option['+Jonsinput4+']')
+		browser.find_element_by_xpath(m).click()
+		#性
+		s = str(random.randint(1,4))
+		st = str('//*[@id="gender"]/option['+s+']')
+		browser.find_element_by_xpath(st).click()
+		#繼續
+		browser.find_element_by_xpath('//*[@id="view_container"]/div/div/div[2]/div/div[2]/div/div[1]/div/div/button').click()
+
+
+#新增電話號碼以享有更多服務
+		#略過
+		element = WebDriverWait(browser, 10, 0.5).until(		
+		EC.presence_of_element_located((By.XPATH,'//*[@id="view_container"]/div/div/div[2]/div/div[2]/div[2]/div[2]/div/div/button/span')),'\n!!!找不到這個網頁原素!!!\n略過\n' + '//*[@id="view_container"]\n'
+		)
+		browser.find_element_by_xpath('//*[@id="view_container"]/div/div/div[2]/div/div[2]/div[2]/div[2]/div/div/button/span').click()
+
+
+#隱私權與條款
+		#我同意
+		element = WebDriverWait(browser, 10, 0.5).until(		
+		EC.presence_of_element_located((By.XPATH,'//*[@id="termsofserviceNext"]/span')),'\n!!!找不到這個網頁原素!!!\n我同意\n' + '//*[@id="termsofserviceNext"]\n'
+		)
+		browser.find_element_by_xpath('//*[@id="termsofserviceNext"]/span').click()
+
+
+#歡迎使用
+		#Google 帳戶
+		element = WebDriverWait(browser, 10, 0.5).until(		
+		EC.presence_of_element_located((By.XPATH,'//*[@id="gb"]/div[2]/div[3]/div[1]/div/div/a')),'\n!!!找不到這個網頁原素!!!\nGoogle 帳戶\n' + '//*[@id="gb"]\n'
+		)
+		browser.find_element_by_xpath('//*[@id="gb"]/div[2]/div[3]/div[1]/div/div/a').click()
+
+		print("\n******************已開了*******************\n")
+		_SaveDate()
 
 	except: #電話不可用!
 		print("\n電話不可用!請使用=另一個號\n")
@@ -310,53 +354,6 @@ def _MakeGoogleAC():
 		browser.quit()
 		_MakeDate()
 
-
-
-
-
-
-################################################
-################################################
-################################################
-################################################
-################################################
-################################################
-################################################
-
-
-
-
-
-	#到詳細資料頁
-	#等有年位
-	element = WebDriverWait(browser, 10, 0.5).until(		
-		EC.presence_of_element_located((By.XPATH,'//*[@id="year"]')),'\n!!!找不到這個網頁原素!!!\n年位\n' + '//*[@id="year"]\n'
-	)
-	#年
-	browser.find_element_by_xpath('//*[@id="year"]').send_keys(Jonsinput3)
-	#日
-	browser.find_element_by_xpath('//*[@id="day"]').send_keys(Jonsinput5)
-	#月
-	m = str('//*[@id="month"]/option['+Jonsinput4+']')
-	browser.find_element_by_xpath(m).click()
-	#性
-	s = str(random.randint(1,4))
-	st = str('//*[@id="gender"]/option['+s+']')
-	browser.find_element_by_xpath(st).click()
-
-
-	print ('\n未K')
-################################################
-################################################
-################################################
-################################################
-################################################
-################################################
-################################################
-
-
-	_SaveDate()
-	#os.system("pause")
 
 
 
