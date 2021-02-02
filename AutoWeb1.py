@@ -80,7 +80,7 @@ def _MakeDate():
 		Jonsinput5 = str(random.randint(1,28))	#隨機日2個數字
 		Jonsinput6 = str(Jonsinput1+Jonsinput2+Jonsinput3+Jonsinput4+Jonsinput5)	#1+2=英文姓
 		Jonsinput7 = _GenPassword(15)	#15字密碼
-		_printDate(),_MakeGoogleAC()
+		_printDate(),_SeleniumUp(),_MakeGoogleAC()
 	else:
 		Jonsinput1 = _GenRandomTxt(3)	#3字英文姓
 		Jonsinput2 = _GenRandomTxt(6)	#6字英文名
@@ -89,7 +89,7 @@ def _MakeDate():
 		Jonsinput5 = str(random.randint(1,28))	#隨機日2個數字
 		Jonsinput6 = str(Jonsinput1+Jonsinput2+Jonsinput3+Jonsinput4+Jonsinput5)	#1+2=英文姓
 		Jonsinput7 = _GenPassword(15)	#15字密碼
-		_printDate(),_MakeGoogleAC()
+		_printDate(),_SeleniumUp(),_MakeGoogleAC()
 ###***********###***********###***********###***********
 ###***********###***********###***********###***********
 ###***********###***********###***********###***********
@@ -112,7 +112,7 @@ def _MakeDate():
 		Jonsinput5 = str(random.randint(1,28))	#隨機日2個數字
 		Jonsinput6 = str(Jonsinput1+Jonsinput2+Jonsinput3+Jonsinput4+Jonsinput5)	#1+2=英文姓
 		Jonsinput7 = _GenPassword(15)	#15字密碼
-		_printDate(),_MakeGoogleAC()
+		_printDate(),_SeleniumUp(),_MakeGoogleAC()
 	else:
 		if (len(Jonsinput1a) == 0 ):
 			Jonsinput1 = _GenRandomTxt(3)	#3字英文姓
@@ -148,7 +148,7 @@ def _MakeDate():
 			Jonsinput7 = _GenPassword(15)	#15字密碼
 		else:
 			Jonsinput7 = Jonsinput7a	#客入的2個數字
-		_printDate(),_MakeGoogleAC()
+		_printDate(),_SeleniumUp(),_MakeGoogleAC()
 #############################################_MakeDateEND
 
 
@@ -161,29 +161,8 @@ def _MakeDate():
 #開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail
 #開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail
 #開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail
-from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.options import Options
-
 
 def _MakeGoogleAC():
-	print ('\n_MakeGoogleAC 自動開Googleac 202101252326\n\n')
-	#selenium基本
-	options = webdriver.ChromeOptions()		#禁彈窗
-	prefs = {'profile.default_content_setting_values':{'notifications' : 2}}  
-	options.add_experimental_option('prefs',prefs)
-	options.add_argument("--log-level=3")
-	options.add_argument("--incognito")  # 使用無痕模式。用 selenium開瀏覽器已經很乾淨了，但疑心病重的可以用一下
-	#options.add_argument('--headless')		#冇頭
-	#options.add_argument('--no-sandbox')	#冇頭
-	browser = webdriver.Chrome('../.exe/chromedriver' ,chrome_options=options)
-	browser.set_window_size(480, 600)
-
-
 #到申請AC頁
 	browser.get('https://accounts.google.com/signup')
 	#等有email位
@@ -279,7 +258,7 @@ def _MakeGoogleAC():
 		print("\n******************已開了*******************\n")
 		_SaveDate()
 		browser.quit()
-		_SaveToDrive()
+		_SeleniumUp(),_SaveToDrive()
 
 	except: #電話不可用!
 		print("\n電話不可用!請使用=另一個號\n")
@@ -299,6 +278,8 @@ def _MakeGoogleAC():
 
 
 def _SaveToDrive():
+	print("\n_SaveToDrive!_SaveToDrive!_SaveToDrive!_SaveToDrive!\n")
+	os.system("pause")
 
 
 
@@ -471,10 +452,35 @@ def _GenPassword(length):
 	#随机英數文字标点
 	chars=string.ascii_letters+string.digits+string.punctuation
 	return ''.join([random.choice(chars) for i in range(length)])
-#生成随机密码END
 
 
 
+#selenium
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+options = 0
+prefs = 0
+browser = 0
+def _SeleniumUp():
+	global options
+	global prefs
+	global browser
+	print ('\n打開selenium\n\n')
+	#selenium基本
+	options = webdriver.ChromeOptions()		#禁彈窗
+	prefs = {'profile.default_content_setting_values':{'notifications' : 2}}  
+	options.add_experimental_option('prefs',prefs)
+	options.add_argument("--log-level=3")
+	options.add_argument("--incognito")  # 使用無痕模式。用 selenium開瀏覽器已經很乾淨了，但疑心病重的可以用一下
+	#options.add_argument('--headless')		#冇頭
+	#options.add_argument('--no-sandbox')	#冇頭
+	browser = webdriver.Chrome('../.exe/chromedriver' ,chrome_options=options)
+	browser.set_window_size(480, 600)
 
 
 
