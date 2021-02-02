@@ -1,7 +1,10 @@
 ﻿#-*- coding:utf-8 -*-
 '''
 自動開ac
-202101230510
+
+開Gmail OK
+202102022016
+
 '''
 
 import os
@@ -14,23 +17,10 @@ import re
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#############################################_Star
+#############################################_Star
+#############################################_Star
+#############################################_Star
 #############################################_Star
 def _Star():
 	global a0json
@@ -59,34 +49,6 @@ def _Star():
 				else:
 					a0json = _SeeMyDate
 					_SeeDate()
-#############################################_StarEND
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -194,42 +156,11 @@ def _MakeDate():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#開Gmail
+#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail
+#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail
+#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail
+#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail
+#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail#開Gmail
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.wait import WebDriverWait
@@ -347,6 +278,8 @@ def _MakeGoogleAC():
 
 		print("\n******************已開了*******************\n")
 		_SaveDate()
+		browser.quit()
+		_SaveToDrive()
 
 	except: #電話不可用!
 		print("\n電話不可用!請使用=另一個號\n")
@@ -365,7 +298,7 @@ def _MakeGoogleAC():
 
 
 
-
+def _SaveToDrive():
 
 
 
@@ -541,23 +474,6 @@ def _GenPassword(length):
 #生成随机密码END
 
 
-
-
-
-
-
-
-# 判断某个元素是否存在
-# https://www.cnblogs.com/jasmine0627/p/13093277.html
-def isElementExist(self, element):
-	flag = True
-	driver = self.driver
-	try:
-		driver.find_element_by_xpath(element)
-		return flag
-	except:
-		flag = False
-		return flag
 
 
 
